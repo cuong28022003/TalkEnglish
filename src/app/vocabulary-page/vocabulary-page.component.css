@@ -1,0 +1,125 @@
+.vocabulary-page {
+  color: var(--color-text-primary);
+}
+
+.breadcrumb {
+  font-size: var(--font-size-small);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb a {
+  color: var(--color-secondary-blue);
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.vocab-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.vocab-header h2 {
+  color: var(--color-primary-navy);
+  font-size: 24px;
+  border-bottom: 2px solid var(--color-border-light);
+  padding-bottom: var(--spacing-sm);
+  margin-top: 0;
+}
+
+.vocab-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.vocab-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.vocab-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-header h3 {
+  color: var(--color-primary-navy);
+  font-size: 18px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-body {
+  display: flex;
+  gap: var(--spacing-xl);
+}
+
+.vocab-explanations, .vocab-examples {
+  flex: 1;
+  min-width: 0;
+}
+
+h4 {
+  color: var(--color-primary-navy);
+  font-size: 16px;
+  margin-bottom: var(--spacing-sm);
+  margin-top: 0;
+}
+
+.content-box {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  height: 100%;
+}
+
+.examples-box {
+  background-color: #F0F4FF;
+}
+
+.content-box ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.content-box li {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.vocab-explanations li {
+  color: var(--color-text-primary);
+}
+
+.vocab-examples li {
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+/* Specific highlight styling for strong tags rendered in innerHTML */
+::ng-deep .vocab-explanations strong {
+  background-color: var(--color-accent-yellow);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-weight: var(--font-weight-semi);
+  color: #B8860B;
+}
+
+.not-found {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .section-body {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,51 @@
+<div class="vocabulary-page">
+  @if (lessonData) {
+    <div class="breadcrumb">
+      <a routerLink="/menu/vocabulary">English Vocabulary</a> &raquo; <span>{{ lessonData.title }}</span>
+    </div>
+
+    <div class="vocab-header">
+      <h2>{{ lessonData.title }}</h2>
+      <p class="vocab-desc">{{ lessonData.description }}</p>
+    </div>
+
+    <div class="vocab-layout">
+      @for (section of lessonData.sections; track section.title) {
+        <div class="vocab-section">
+          <div class="section-header">
+            <h3>{{ section.title }}</h3>
+          </div>
+          
+          <div class="section-body">
+            <div class="vocab-explanations">
+              <h4>Explanations</h4>
+              <div class="content-box">
+                <ul>
+                  @for (exp of section.explanations; track exp) {
+                    <li [innerHTML]="highlightVocab(exp)"></li>
+                  }
+                </ul>
+              </div>
+            </div>
+            
+            <div class="vocab-examples">
+              <h4>Examples</h4>
+              <div class="content-box examples-box">
+                <ul>
+                  @for (ex of section.examples; track ex) {
+                    <li>{{ ex }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="not-found">
+      <h2>Vocabulary Lesson Not Found</h2>
+      <p>Sorry, the lesson you are looking for does not exist.</p>
+    </div>
+  }
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { LESSONS_DATA } from '../data/lessons.data';
 import { GRAMMAR_DATA } from '../data/grammar.data';
+import { VOCABULARY_DATA } from '../data/vocabulary.data';
 
 @Component({
   selector: 'app-menu-page',
@@ -35,7 +36,8 @@ export class MenuPageComponent implements OnInit {
       'travel': 'Travel English Lessons',
       'idioms': 'Idioms and Phrases',
       'special': 'Special Topics',
-      'grammar': 'English Grammar in Use' // fallback
+      'grammar': 'English Grammar in Use',
+      'vocabulary': 'English Vocabulary' // new mapping
     };
     
     const grammarCategoryMap: Record<string, string> = {
@@ -86,6 +88,12 @@ export class MenuPageComponent implements OnInit {
         return { category: cat, lessons };
       });
       this.lessonsList = [];
+    } else if (this.menuId === 'vocabulary') {
+      this.menuTitle = titles[this.menuId] || 'English Vocabulary';
+      this.itemRoutePrefix = '/vocabulary';
+      this.isGrouped = false;
+      this.lessonsList = Object.values(VOCABULARY_DATA);
+      this.groupedLessons = [];
     } else {
       this.menuTitle = titles[this.menuId] || 'English Lessons';
       this.itemRoutePrefix = '/lesson';
