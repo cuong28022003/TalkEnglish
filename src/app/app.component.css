@@ -1,0 +1,53 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-white);
+}
+
+.app-header {
+  background-color: var(--color-primary-navy);
+  color: white;
+  padding: 12px 20px;
+  border-bottom: 3px solid var(--color-accent-yellow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  width: 100%;
+  background-color: var(--color-bg-white);
+}
+
+.app-sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background-color: var(--color-bg-light);
+  padding: var(--spacing-lg);
+  border-right: 1px solid var(--color-border-light);
+  overflow-y: auto;
+}
+
+.app-main-content {
+  flex: 1;
+  padding: var(--spacing-xl) 40px;
+  background-color: var(--color-bg-white);
+  min-width: 0;
+}
+
+.app-footer {
+  background-color: var(--color-text-primary);
+  color: var(--color-text-muted);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  text-align: center;
+  margin-top: auto;
+  border-top: 3px solid var(--color-accent-yellow);
+}

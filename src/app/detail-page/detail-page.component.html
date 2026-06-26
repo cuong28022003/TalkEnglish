@@ -1,0 +1,80 @@
+<div class="detail-page">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a routerLink="/">Home</a> &raquo;
+    <a routerLink="/menu/basics">English Speaking Basics</a> &raquo;
+    <span>{{ lessonTitle }}</span>
+  </div>
+
+  <!-- Lesson Header -->
+  <div class="lesson-header">
+    <h2>{{ lessonTitle }}</h2>
+    <div class="instructions">
+      <p>{{ lessonDescription }} <strong>Listen to each sentence and repeat it.</strong></p>
+    </div>
+  </div>
+
+  <!-- Lesson Content: Sentences with Play Buttons -->
+  <div class="lesson-content">
+    <div class="sentence-list">
+      @for (sentence of sentences; track sentence.audioFile; let i = $index) {
+        <div class="sentence-row" [class.active]="isPlaying(i)">
+          <div class="sentence-number">{{ i + 1 }}.</div>
+          <div class="sentence-text">{{ sentence.text }}</div>
+          <div class="audio-control">
+            <button class="btn-play" (click)="playAudio(i)" [class.playing]="isPlaying(i)">
+              {{ isPlaying(i) ? '⏸ Pause' : '▶ Play' }}
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Audio Player Controls -->
+    <div class="audio-player">
+      <button class="player-btn" (click)="playAll()" title="Play All">
+        ▶ Play All
+      </button>
+      <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" min="0" max="100" value="80" class="volume-slider" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Record Yourself Section -->
+  <div class="record-section">
+    <h3>🎙️ Record Yourself</h3>
+    <ol>
+      <li>Click <strong>Record</strong> and speak into your microphone.</li>
+      <li>Click <strong>Stop</strong> and <strong>Play</strong> to hear your version.</li>
+      <li>Compare with the Native Model above.</li>
+    </ol>
+    <div class="record-controls">
+      <button class="btn-record" [class.recording]="isRecording" (click)="toggleRecording()">
+        {{ isRecording ? '⏹ Stop' : '🔴 Record' }}
+      </button>
+      <button class="btn-playback" (click)="playRecording()" [disabled]="isRecording">
+        ▶ Playback
+      </button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="lesson-navigation">
+    <a class="btn-secondary" routerLink="/menu/basics">← Back to Lessons</a>
+    <a class="btn-primary" routerLink="/menu/basics">Next Lesson →</a>
+  </div>
+
+  <!-- Discover More -->
+  <div class="discover-more">
+    <h3>Discover more</h3>
+    <ul class="discover-list">
+      <li><a href="#">English grammar guide</a></li>
+      <li><a href="#">Pronunciation lessons</a></li>
+      <li><a href="#">English listening exercises</a></li>
+      <li><a href="#">Language learning app</a></li>
+      <li><a href="#">Public speaking tips</a></li>
+    </ul>
+  </div>
+</div>

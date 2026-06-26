@@ -1,0 +1,96 @@
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <h3>ENGLISH LESSONS</h3>
+    <ul>
+      <li>
+        <a href="#" (click)="toggleSpeakingLessons($event)" class="dropdown-toggle">
+          Speaking English Lessons
+          <span class="arrow" [class.down]="isSpeakingLessonsExpanded">&#9658;</span>
+        </a>
+        @if (isSpeakingLessonsExpanded) {
+          <ul class="dropdown-menu">
+            <li><a routerLink="/menu/basics">English Speaking Basics</a></li>
+            <li><a routerLink="/menu/regular">Regular English Lessons</a></li>
+            <li><a routerLink="/menu/business">Business English Lessons</a></li>
+            <li><a routerLink="/menu/interview">Interview English Lessons</a></li>
+            <li><a routerLink="/menu/travel">Travel English Lessons</a></li>
+            <li><a routerLink="/menu/idioms">Idioms and Phrases</a></li>
+            <li><a routerLink="/menu/special">Special Topics</a></li>
+          </ul>
+        }
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>ENGLISH VIDEO LESSONS</h3>
+    <ul>
+      <li><a routerLink="/menu/video">English Video Lessons</a></li>
+      <li><a routerLink="/menu/conversation">Conversation Videos</a></li>
+      <li><a routerLink="/menu/business-video">Business English Videos</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>ENGLISH LISTENING LESSONS</h3>
+    <ul>
+      <li><a routerLink="/menu/listening">English Listening Lessons</a></li>
+      <li><a routerLink="/menu/basic-listening">Basic Listening Lessons</a></li>
+      <li><a routerLink="/menu/intermediate-listening">Intermediate Listening Lessons</a></li>
+      <li><a routerLink="/menu/advanced-listening">Advanced Listening Lessons</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section highlight">
+    <h3>EXTRAS</h3>
+    <ul>
+      <li><a routerLink="/menu/pronunciation">Pronunciation Lessons</a></li>
+      <li>
+        <a href="#" (click)="toggleGrammarMenu($event)" class="dropdown-toggle">
+          English Grammar Basics
+          <span class="arrow" [class.down]="isGrammarOpen">&#9658;</span>
+        </a>
+        @if (isGrammarOpen) {
+          <ul class="dropdown-menu">
+            <li><a routerLink="/menu/grammar-present-and-past">Present and past</a></li>
+            <li><a routerLink="/menu/grammar-present-perfect-and-past">Present perfect and past</a></li>
+            <li><a routerLink="/menu/grammar-future">Future</a></li>
+            <li><a routerLink="/menu/grammar-modals">Modals</a></li>
+            <li><a routerLink="/menu/grammar-if-and-wish">if and wish</a></li>
+            <li><a routerLink="/menu/grammar-passive">Passive</a></li>
+            <li><a routerLink="/menu/grammar-reported-speech">Reported speech</a></li>
+            <li><a routerLink="/menu/grammar-questions">Questions and auxiliary verbs</a></li>
+            <li><a routerLink="/menu/grammar-ing-and-to">-ing and to...</a></li>
+            <li><a routerLink="/menu/grammar-articles">Articles and nouns</a></li>
+            <li><a routerLink="/menu/grammar-pronouns">Pronouns and determiners</a></li>
+            <li><a routerLink="/menu/grammar-relative-clauses">Relative clauses</a></li>
+            <li><a routerLink="/menu/grammar-adjectives">Adjectives and adverbs</a></li>
+            <li><a routerLink="/menu/grammar-conjunctions">Conjunctions and prepositions</a></li>
+            <li><a routerLink="/menu/grammar-prepositions">Prepositions</a></li>
+            <li><a routerLink="/menu/grammar-phrasal-verbs">Phrasal verbs</a></li>
+          </ul>
+        }
+      </li>
+      <li><a routerLink="/menu/vocabulary">English Vocabulary</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>First Time?</h3>
+    <p>Start by reading the <a href="#">Instructions</a>.</p>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Popular</h3>
+    <p><a href="#">5 Rules for Speaking Fluency</a></p>
+  </div>
+
+  <div class="sidebar-section">
+    <h3>Download Offline Version</h3>
+    <ul>
+      <li><a href="#">Computer Version</a></li>
+      <li><a href="#">Android Version</a></li>
+      <li><a href="#">iPad/iPhone Version</a></li>
+    </ul>
+  </div>
+</aside>

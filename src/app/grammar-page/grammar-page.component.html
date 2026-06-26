@@ -1,0 +1,66 @@
+<div class="grammar-page">
+  @if (unitData) {
+    <div class="breadcrumb">
+      <a href="#">English Grammar Basics</a> &raquo; <span>{{ unitData.title }}</span>
+    </div>
+
+    <div class="grammar-header">
+      <h2>{{ unitData.title }}</h2>
+    </div>
+
+    <div class="grammar-layout">
+      @if (unitData.explanations && unitData.explanations.length > 0) {
+        <!-- Left side: Explanations -->
+        <div class="grammar-explanations">
+          <h3>Explanations</h3>
+          <div class="content-box">
+            <ul>
+              @for (exp of unitData.explanations; track exp) {
+                <li [innerHTML]="highlightGrammar(exp)"></li>
+              }
+            </ul>
+          </div>
+          
+          <h3>Examples</h3>
+          <div class="content-box examples-box">
+            <ul>
+              @for (ex of unitData.examples; track ex) {
+                <li>{{ ex }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right side: Exercises -->
+        <div class="grammar-exercises">
+          <h3>Exercises</h3>
+          <div class="content-box">
+            <p>Read the sentences and see the correct usage:</p>
+            <div class="exercise-list">
+              @for (exercise of unitData.exercises; track exercise.question; let i = $index) {
+                <div class="exercise-item">
+                  <div class="question">
+                    <strong>{{ i + 1 }}.</strong> {{ exercise.question }}
+                  </div>
+                  <div class="answer">
+                    <em>Answer:</em> <span class="correct-answer">{{ exercise.answer }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      } @else {
+        <div class="placeholder-content">
+          <h3>Content coming soon</h3>
+          <p>The detailed explanations and exercises for this unit are being extracted from the NotebookLM source material and will be available shortly.</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="not-found">
+      <h2>Grammar Unit Not Found</h2>
+      <p>Sorry, the grammar unit you are looking for does not exist.</p>
+    </div>
+  }
+</div>

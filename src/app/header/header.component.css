@@ -1,0 +1,86 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  width: 100%;
+  gap: var(--spacing-lg);
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+/* Logo is text-based TALKENGLISH.COM */
+
+.header-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  font-size: var(--font-size-small);
+  border: none;
+  background: transparent;
+  color: white;
+  width: 200px;
+  outline: none;
+}
+.search-bar input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.search-bar button {
+  padding: 8px 14px;
+  background-color: var(--color-accent-yellow);
+  border: none;
+  color: var(--color-primary-navy);
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi);
+  transition: background-color 0.2s;
+}
+.search-bar button:hover {
+  background-color: #E6C200;
+}
+
+.language-select {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.language-select label {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+}
+
+.language-select select {
+  padding: 6px 8px;
+  font-size: var(--font-size-xs);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--border-radius);
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  min-width: 160px;
+}
+.language-select select option {
+  color: var(--color-text-primary);
+}

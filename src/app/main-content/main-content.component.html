@@ -1,0 +1,46 @@
+<main class="content">
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Learn English speaking FREE with TalkEnglish.com</h2>
+    <p>Our goal is to help you <strong>Learn English speaking</strong> so you can speak English fluently. Improve your spoken English Free!</p>
+    <div class="hero-actions">
+      <a routerLink="/menu/basics" class="btn-primary">Start Learning Now</a>
+      <a href="#" class="btn-secondary">Read Instructions for First-Time Users</a>
+    </div>
+  </div>
+
+  <!-- Steps Section -->
+  <div class="steps-section">
+    <h3>📋 Steps to Learning English</h3>
+    <p>To become a fluent English speaker, you must study and master <strong>reading, listening, and speaking</strong>. At TalkEnglish.com, the lessons are structured to give you practice in all three areas at the same time.</p>
+  </div>
+
+  <!-- Featured Lessons Grid -->
+  <div class="section-title">
+    <h3>English Lessons</h3>
+    <p>Choose a category to start improving your English speaking skills</p>
+  </div>
+
+  <div class="lesson-grid">
+    @for (cat of categories; track cat.title) {
+      <a [routerLink]="cat.route" class="lesson-card">
+        <div class="card-icon">{{ cat.icon }}</div>
+        <h4>{{ cat.title }}</h4>
+        <p>{{ cat.description }}</p>
+      </a>
+    }
+  </div>
+
+  <!-- Extras Section -->
+  <div class="extras-section">
+    <h3>Extras</h3>
+    <div class="extras-grid">
+      @for (extra of extras; track extra.title) {
+        <a [routerLink]="extra.route" class="extra-card">
+          <span class="extra-icon">{{ extra.icon }}</span>
+          <span>{{ extra.title }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</main>

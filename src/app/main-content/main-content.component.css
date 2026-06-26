@@ -1,0 +1,184 @@
+/* --- Hero Section --- */
+.hero {
+  text-align: center;
+  padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border-light);
+}
+
+.hero h2 {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-navy);
+  margin-bottom: var(--spacing-md);
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--color-text-secondary);
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- Steps Section --- */
+.steps-section {
+  background: linear-gradient(135deg, #F0F4FF, #F8FAFE);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-left: 5px solid var(--color-primary-navy);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-xl);
+}
+
+.steps-section h3 {
+  color: var(--color-primary-navy);
+  margin-bottom: var(--spacing-sm);
+  font-size: 18px;
+}
+
+.steps-section p {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* --- Section Title --- */
+.section-title {
+  margin-bottom: var(--spacing-lg);
+}
+.section-title h3 {
+  font-size: 20px;
+  margin-bottom: var(--spacing-xs);
+}
+.section-title p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-small);
+}
+
+/* --- Lesson Grid --- */
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.lesson-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.lesson-card:hover {
+  border-color: var(--color-primary-navy);
+  box-shadow: 0 4px 16px rgba(26, 58, 108, 0.12);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.lesson-card h4 {
+  color: var(--color-primary-navy);
+  font-size: 15px;
+  font-weight: var(--font-weight-semi);
+  margin-bottom: var(--spacing-xs);
+}
+
+.lesson-card p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --- Extras Section --- */
+.extras-section {
+  background-color: var(--color-bg-light);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.extras-section h3 {
+  margin-bottom: var(--spacing-md);
+  font-size: 18px;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+.extra-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi);
+  color: var(--color-primary-navy);
+  transition: all 0.2s;
+}
+
+.extra-card:hover {
+  background-color: var(--color-primary-navy);
+  color: white;
+  text-decoration: none;
+}
+
+.extra-icon {
+  font-size: 20px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .lesson-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .extras-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .lesson-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+  .extras-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

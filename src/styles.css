@@ -1,0 +1,160 @@
+/* ============================================================
+   TalkEnglish Global Styles - Based on TALK_ENGLISH_SPEC.md
+   ============================================================ */
+
+/* --- CSS Custom Properties (Design Tokens) --- */
+:root {
+  /* Color Palette */
+  --color-primary-navy: #1A3A6C;
+  --color-secondary-blue: #3498DB;
+  --color-accent-yellow: #FFD700;
+  --color-bg-white: #FFFFFF;
+  --color-bg-light: #F4F6F9;
+  --color-text-primary: #212529;
+  --color-text-secondary: #6C757D;
+  --color-text-muted: #ADB5BD;
+  --color-success-green: #27AE60;
+  --color-success-bg: #E8F5E9;
+  --color-border: #DEE2E6;
+  --color-border-light: #E9ECEF;
+
+  /* Typography */
+  --font-family-primary: 'Segoe UI', 'Roboto', 'Open Sans', Arial, sans-serif;
+  --font-size-hero: 24px;
+  --font-size-heading: 18px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+  --font-size-xs: 12px;
+  --font-weight-bold: 700;
+  --font-weight-semi: 600;
+  --font-weight-regular: 400;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --max-content-width: 1200px;
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+}
+
+/* --- Global Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-secondary-blue);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--color-primary-navy);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary-navy);
+  margin-top: 0;
+}
+
+/* --- Utility Classes --- */
+.container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.text-center { text-align: center; }
+.text-muted { color: var(--color-text-muted); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+/* --- Common Button Styles --- */
+.btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--color-primary-navy);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi);
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: #132A4F;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--color-primary-navy);
+  border: 1px solid var(--color-primary-navy);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semi);
+  transition: all 0.2s;
+}
+.btn-secondary:hover {
+  background-color: var(--color-primary-navy);
+  color: white;
+  text-decoration: none;
+}
+
+.btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: var(--color-primary-navy);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi);
+  transition: background-color 0.2s;
+}
+.btn-play:hover {
+  background-color: #132A4F;
+}
+
+/* --- Breadcrumb --- */
+.breadcrumb {
+  font-size: var(--font-size-small);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+.breadcrumb a {
+  color: var(--color-secondary-blue);
+}
+
+/* --- Section Divider --- */
+.section-divider {
+  border-top: 2px solid var(--color-border-light);
+  margin: var(--spacing-xl) 0;
+  padding-top: var(--spacing-lg);
+}
+
