@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { LESSONS_DATA } from '../data/lessons.data';
-import { GRAMMAR_DATA } from '../data/grammar.data';
-import { VOCABULARY_DATA } from '../data/vocabulary.data';
+import { LESSONS_DATA } from '../../data/lessons.data';
+import { GRAMMAR_DATA } from '../../data/grammar.data';
+import { VOCABULARY_DATA } from '../../data/vocabulary.data';
 
 @Component({
   selector: 'app-menu-page',
   imports: [RouterLink],
   templateUrl: './menu-page.component.html',
-  styleUrl: './menu-page.component.css'
+  styleUrl: './menu-page.component.scss'
 })
 export class MenuPageComponent implements OnInit {
   menuId: string = '';
@@ -29,24 +29,19 @@ export class MenuPageComponent implements OnInit {
 
   updateMenuData() {
     const titles: Record<string, string> = {
-      'animals': 'Animals',
-      'appearance': 'Appearance',
-      'communication': 'Communication',
-      'culture': 'Culture',
-      'food-and-drink': 'Food and drink',
-      'functions': 'Functions',
-      'health': 'Health',
-      'homes-and-buildings': 'Homes and buildings',
-      'leisure': 'Leisure',
-      'notions': 'Notions',
       'people': 'People',
-      'politics-and-society': 'Politics and society',
-      'science-and-technology': 'Science and technology',
-      'sport': 'Sport',
-      'the-natural-world': 'The natural world',
-      'time-and-space': 'Time and space',
+      'food-and-drink': 'Food and Drink',
+      'work': 'Work',
       'travel': 'Travel',
-      'work-and-business': 'Work and business',
+      'the-environment': 'The Environment',
+      'animals': 'Animals',
+      'activities': 'Activities',
+      'around-town': 'Around Town',
+      'arts-and-the-media': 'Arts and the Media',
+      'science-and-technology': 'Science and Technology',
+      'health': 'Health',
+      'crime-and-the-law': 'Crime and the Law',
+      'money-and-finance': 'Money and Finance',
       'grammar': 'English Grammar in Use',
       'vocabulary': 'English Vocabulary' // new mapping
     };

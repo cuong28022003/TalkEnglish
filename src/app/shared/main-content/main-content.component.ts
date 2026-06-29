@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-main-content',
   imports: [RouterLink],
   templateUrl: './main-content.component.html',
-  styleUrl: './main-content.component.css'
+  styleUrl: './main-content.component.scss'
 })
 export class MainContentComponent {
   categories = [

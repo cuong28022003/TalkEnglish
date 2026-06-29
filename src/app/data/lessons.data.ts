@@ -16,7 +16,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-1': {
     id: 'lesson-1',
     title: 'Introductory and General Expressions',
-    category: 'Communication',
+    category: 'People',
     description: 'Learn common expressions to start conversations and respond generally.',
     sentences: [
       { text: "Good morning. How are you today?", audioFile: "audio_1_1" },
@@ -33,7 +33,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-2': {
     id: 'lesson-2',
     title: 'Daily Activities and Work',
-    category: 'Work and business',
+    category: 'Work',
     description: 'Sentences related to your daily routine, commuting, and work life.',
     sentences: [
       { text: "What are you doing right now?", audioFile: "audio_2_1" },
@@ -49,7 +49,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-3': {
     id: 'lesson-3',
     title: 'Communication and Requests',
-    category: 'Communication',
+    category: 'People',
     description: 'How to ask for help, clarify information, and initiate conversation.',
     sentences: [
       { text: "Could you help me for a minute?", audioFile: "audio_3_1" },
@@ -80,7 +80,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-5': {
     id: 'lesson-5',
     title: 'Farewells',
-    category: 'Time and space',
+    category: 'Activities',
     description: 'Common ways to say goodbye and end a conversation.',
     sentences: [
       { text: "I will be there soon.", audioFile: "audio_5_1" },

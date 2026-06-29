@@ -106,3 +106,9 @@ test(grammar): add unit tests for ExerciseEvaluator
 - **README per Module:** Each feature module includes a `README.md` explaining content hierarchy
 - **API Documentation:** Use OpenAPI/Swagger for all endpoints
 - **Component Documentation:** Use Storybook for shared UI components
+
+## 7.11 Styling Standards
+
+- **Preprocessor:** The project exclusively uses **SCSS** instead of raw CSS to allow for nesting, variables, and mixins.
+- **Component Styling:** Styles must be encapsulated within their respective component's `.scss` file.
+- **Global Styles:** Variables and global themes should be maintained in `src/styles.scss`.

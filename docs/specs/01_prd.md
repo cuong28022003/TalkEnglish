@@ -38,25 +38,20 @@ The platform serves a global audience of English learners across various profici
 The content is organized into logical tracks to guide users from absolute beginner to advanced proficiency:
 
 ### English Lessons Hierarchy
-1. **Speaking English Lessons (Oxford Topics):**
-   - **Animals**
-   - **Appearance**
-   - **Communication**
-   - **Culture**
-   - **Food and drink**
-   - **Functions**
-   - **Health**
-   - **Homes and buildings**
-   - **Leisure**
-   - **Notions**
+1. **Speaking English Lessons (Topic English / Vocabulary Builder):**
    - **People**
-   - **Politics and society**
-   - **Science and technology**
-   - **Sport**
-   - **The natural world**
-   - **Time and space**
+   - **Food and Drink**
+   - **Work**
    - **Travel**
-   - **Work and business**
+   - **The Environment**
+   - **Animals**
+   - **Activities**
+   - **Around Town**
+   - **Arts and the Media**
+   - **Science and Technology**
+   - **Health**
+   - **Crime and the Law**
+   - **Money and Finance**
 2. **Listening Lessons:** Categorized into Basic, Intermediate, and Advanced levels
 3. **Extra Lessons:** Focus on Pronunciation, Grammar Basics, and ESL Vocabulary
 

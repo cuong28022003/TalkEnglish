@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LESSONS_DATA, Lesson, Sentence } from '../data/lessons.data';
+import { LESSONS_DATA, Lesson, Sentence } from '../../data/lessons.data';
 
 @Component({
   selector: 'app-detail-page',
   imports: [],
   templateUrl: './detail-page.component.html',
-  styleUrl: './detail-page.component.css'
+  styleUrl: './detail-page.component.scss'
 })
 export class DetailPageComponent implements OnInit {
   lessonId: string = '';

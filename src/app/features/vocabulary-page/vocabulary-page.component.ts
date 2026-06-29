@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { VOCABULARY_DATA, VocabularyLesson } from '../data/vocabulary.data';
+import { VOCABULARY_DATA, VocabularyLesson } from '../../data/vocabulary.data';
 
 @Component({
   selector: 'app-vocabulary-page',
   imports: [RouterLink],
   templateUrl: './vocabulary-page.component.html',
-  styleUrl: './vocabulary-page.component.css'
+  styleUrl: './vocabulary-page.component.scss'
 })
 export class VocabularyPageComponent implements OnInit {
   lessonId: string = '';

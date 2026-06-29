@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GRAMMAR_DATA, GrammarUnit } from '../data/grammar.data';
+import { GRAMMAR_DATA, GrammarUnit } from '../../data/grammar.data';
 
 @Component({
   selector: 'app-grammar-page',
   imports: [],
   templateUrl: './grammar-page.component.html',
-  styleUrl: './grammar-page.component.css'
+  styleUrl: './grammar-page.component.scss'
 })
 export class GrammarPageComponent implements OnInit {
   unitId: string = '';
