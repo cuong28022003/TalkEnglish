@@ -19,6 +19,7 @@
 {
   "id": "uuid",
   "category_id": "uuid",
+  "sub_category": "string",
   "title": "Basic usage of 'I'm'",
   "section": "Section I",
   "level": "Beginner",

@@ -7,6 +7,7 @@ export interface Lesson {
   id: string;
   title: string;
   category: string;
+  subCategory?: string;
   description: string;
   sentences: Sentence[];
 }
@@ -15,7 +16,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-1': {
     id: 'lesson-1',
     title: 'Introductory and General Expressions',
-    category: 'Daily Use Sentences',
+    category: 'Communication',
     description: 'Learn common expressions to start conversations and respond generally.',
     sentences: [
       { text: "Good morning. How are you today?", audioFile: "audio_1_1" },
@@ -32,7 +33,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-2': {
     id: 'lesson-2',
     title: 'Daily Activities and Work',
-    category: 'Daily Use Sentences',
+    category: 'Work and business',
     description: 'Sentences related to your daily routine, commuting, and work life.',
     sentences: [
       { text: "What are you doing right now?", audioFile: "audio_2_1" },
@@ -48,7 +49,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-3': {
     id: 'lesson-3',
     title: 'Communication and Requests',
-    category: 'Daily Use Sentences',
+    category: 'Communication',
     description: 'How to ask for help, clarify information, and initiate conversation.',
     sentences: [
       { text: "Could you help me for a minute?", audioFile: "audio_3_1" },
@@ -63,7 +64,7 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-4': {
     id: 'lesson-4',
     title: 'Politeness and Social Interaction',
-    category: 'Daily Use Sentences',
+    category: 'People',
     description: 'Expressing gratitude and asking about someone\'s well-being.',
     sentences: [
       { text: "Thanks for your help.", audioFile: "audio_4_1" },
@@ -79,13 +80,46 @@ export const LESSONS_DATA: Record<string, Lesson> = {
   'lesson-5': {
     id: 'lesson-5',
     title: 'Farewells',
-    category: 'Daily Use Sentences',
+    category: 'Time and space',
     description: 'Common ways to say goodbye and end a conversation.',
     sentences: [
       { text: "I will be there soon.", audioFile: "audio_5_1" },
       { text: "Have a great evening.", audioFile: "audio_5_2" },
       { text: "See you tomorrow.", audioFile: "audio_5_3" },
       { text: "Talk to you later.", audioFile: "audio_5_4" }
+    ]
+  },
+  'animal-pets-1': {
+    id: 'animal-pets-1',
+    title: 'Talking about Dogs and Cats',
+    category: 'Animals',
+    subCategory: 'Pets',
+    description: 'Basic vocabulary and sentences for describing common household pets.',
+    sentences: [
+      { text: "My dog is very playful.", audioFile: "animal_1_1" },
+      { text: "I feed my cat twice a day.", audioFile: "animal_1_2" }
+    ]
+  },
+  'animal-farm-1': {
+    id: 'animal-farm-1',
+    title: 'Life on the Farm',
+    category: 'Animals',
+    subCategory: 'Farm animals',
+    description: 'Sentences related to animals you find on a farm.',
+    sentences: [
+      { text: "The cows are grazing in the field.", audioFile: "animal_2_1" },
+      { text: "We collect fresh eggs from the chickens every morning.", audioFile: "animal_2_2" }
+    ]
+  },
+  'animal-wild-1': {
+    id: 'animal-wild-1',
+    title: 'Safari Adventures',
+    category: 'Animals',
+    subCategory: 'Wild mammals',
+    description: 'Expressions for describing wild animals on a safari.',
+    sentences: [
+      { text: "The lion is known as the king of the jungle.", audioFile: "animal_3_1" },
+      { text: "Elephants have a remarkable memory.", audioFile: "animal_3_2" }
     ]
   }
 };

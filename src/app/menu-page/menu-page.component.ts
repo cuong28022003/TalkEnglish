@@ -29,13 +29,24 @@ export class MenuPageComponent implements OnInit {
 
   updateMenuData() {
     const titles: Record<string, string> = {
-      'basics': 'Daily Use Sentences',
-      'regular': 'Regular English Lessons',
-      'business': 'Business English Lessons',
-      'interview': 'Interview English Lessons',
-      'travel': 'Travel English Lessons',
-      'idioms': 'Idioms and Phrases',
-      'special': 'Special Topics',
+      'animals': 'Animals',
+      'appearance': 'Appearance',
+      'communication': 'Communication',
+      'culture': 'Culture',
+      'food-and-drink': 'Food and drink',
+      'functions': 'Functions',
+      'health': 'Health',
+      'homes-and-buildings': 'Homes and buildings',
+      'leisure': 'Leisure',
+      'notions': 'Notions',
+      'people': 'People',
+      'politics-and-society': 'Politics and society',
+      'science-and-technology': 'Science and technology',
+      'sport': 'Sport',
+      'the-natural-world': 'The natural world',
+      'time-and-space': 'Time and space',
+      'travel': 'Travel',
+      'work-and-business': 'Work and business',
       'grammar': 'English Grammar in Use',
       'vocabulary': 'English Vocabulary' // new mapping
     };
@@ -97,9 +108,31 @@ export class MenuPageComponent implements OnInit {
     } else {
       this.menuTitle = titles[this.menuId] || 'English Lessons';
       this.itemRoutePrefix = '/lesson';
-      this.isGrouped = false;
-      this.lessonsList = Object.values(LESSONS_DATA);
-      this.groupedLessons = [];
+      
+      const filteredLessons = Object.values(LESSONS_DATA).filter(lesson => lesson.category === this.menuTitle);
+      const hasSubCategories = filteredLessons.some(lesson => lesson.subCategory);
+      
+      if (hasSubCategories) {
+        this.isGrouped = true;
+        this.lessonsList = [];
+        const groupsMap = new Map<string, any[]>();
+        
+        for (const lesson of filteredLessons) {
+          const subCat = lesson.subCategory || 'General';
+          if (!groupsMap.has(subCat)) {
+            groupsMap.set(subCat, []);
+          }
+          groupsMap.get(subCat)?.push(lesson);
+        }
+        
+        this.groupedLessons = Array.from(groupsMap.entries()).map(([cat, lessons]) => {
+          return { category: cat, lessons };
+        });
+      } else {
+        this.isGrouped = false;
+        this.lessonsList = filteredLessons;
+        this.groupedLessons = [];
+      }
     }
   }
 }

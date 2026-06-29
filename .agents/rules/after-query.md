@@ -2,7 +2,7 @@
 trigger: always_on
 ---
 
-## Spec Maintenance Rule: TALK_ENGLISH_SPEC.md
+# Spec Maintenance Rule: TALK_ENGLISH_SPEC.md
 
 Whenever I make a change related to the website - update code you must:
 

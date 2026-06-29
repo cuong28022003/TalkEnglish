@@ -38,13 +38,25 @@ The platform serves a global audience of English learners across various profici
 The content is organized into logical tracks to guide users from absolute beginner to advanced proficiency:
 
 ### English Lessons Hierarchy
-1. **Speaking English Lessons:**
-   - **English Speaking Basics:** 90 lessons using simple phrases (e.g., usage of "I'm," "I have," "I'm gonna")
-   - **Regular English Lessons:** Daily conversation skills
-   - **Business English:** Office settings and professional vocabulary
-   - **Interview English:** Confidence building for English-led interviews
-   - **Travel English:** Essential phrases for navigation and services
-   - **Idioms and Phrases:** Expressions that are difficult to translate literally
+1. **Speaking English Lessons (Oxford Topics):**
+   - **Animals**
+   - **Appearance**
+   - **Communication**
+   - **Culture**
+   - **Food and drink**
+   - **Functions**
+   - **Health**
+   - **Homes and buildings**
+   - **Leisure**
+   - **Notions**
+   - **People**
+   - **Politics and society**
+   - **Science and technology**
+   - **Sport**
+   - **The natural world**
+   - **Time and space**
+   - **Travel**
+   - **Work and business**
 2. **Listening Lessons:** Categorized into Basic, Intermediate, and Advanced levels
 3. **Extra Lessons:** Focus on Pronunciation, Grammar Basics, and ESL Vocabulary
 
