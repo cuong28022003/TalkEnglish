@@ -1,7 +1,9 @@
 <div class="vocabulary-page">
   @if (lessonData) {
     <div class="breadcrumb">
-      <a routerLink="/menu/vocabulary">English Vocabulary</a> &raquo; <span>{{ lessonData.title }}</span>
+      <a routerLink="/menu/vocabulary">English Vocabulary</a> &raquo;
+      <span>{{ lessonData.category }}</span> &raquo;
+      <span>{{ lessonData.title }}</span>
     </div>
 
     <div class="vocab-header">
@@ -9,39 +11,116 @@
       <p class="vocab-desc">{{ lessonData.description }}</p>
     </div>
 
-    <div class="vocab-layout">
-      @for (section of lessonData.sections; track section.title) {
-        <div class="vocab-section">
-          <div class="section-header">
+    <!-- Facing-pages layout: Learn (left) | Practice (right) -->
+    @for (section of lessonData.sections; track section.title; let sIdx = $index) {
+      <div class="facing-pages">
+        <!-- LEFT PAGE: Vocabulary Presentation -->
+        <div class="page-left">
+          <div class="page-header">
+            <span class="page-label">Learn</span>
             <h3>{{ section.title }}</h3>
           </div>
-          
-          <div class="section-body">
-            <div class="vocab-explanations">
-              <h4>Explanations</h4>
-              <div class="content-box">
-                <ul>
-                  @for (exp of section.explanations; track exp) {
-                    <li [innerHTML]="highlightVocab(exp)"></li>
-                  }
-                </ul>
+          <div class="vocab-list">
+            @for (word of section.words; track word.word; let wIdx = $index) {
+              <div class="vocab-item" (click)="flipCard(word)" [class.flipped]="currentWord?.word === word.word && isFlipped">
+                <div class="word-front">
+                  <span class="word-index">{{ wIdx + 1 }}</span>
+                  <div class="word-main">
+                    <span class="word-text">{{ word.word }}</span>
+                    @if (word.phonetic) {
+                      <span class="word-phonetic">{{ word.phonetic }}</span>
+                    }
+                  </div>
+                  <button class="btn-sound" (click)="playAudio(word); $event.stopPropagation()" title="Play audio">
+                    🔊
+                  </button>
+                </div>
+                @if (currentWord?.word === word.word && isFlipped) {
+                  <div class="word-back">
+                    <p class="word-def">{{ word.definition }}</p>
+                    <p class="word-example"><em>Example:</em> {{ word.example }}</p>
+                  </div>
+                }
               </div>
-            </div>
-            
-            <div class="vocab-examples">
-              <h4>Examples</h4>
-              <div class="content-box examples-box">
-                <ul>
-                  @for (ex of section.examples; track ex) {
-                    <li>{{ ex }}</li>
-                  }
-                </ul>
-              </div>
-            </div>
+            }
           </div>
         </div>
-      }
-    </div>
+
+        <!-- RIGHT PAGE: Exercise Practice -->
+        <div class="page-right">
+          <div class="page-header">
+            <span class="page-label">Practice</span>
+            <h3>Check Your Learning</h3>
+          </div>
+
+          @if (section.exercise) {
+            <div class="exercise-box">
+              <p class="exercise-instruction">📝 {{ section.exercise.instruction }}</p>
+
+              @for (item of section.exercise.items; track item.prompt; let i = $index) {
+                <div class="exercise-row"
+                   [class.correct]="exerciseFeedback[sIdx] && exerciseFeedback[sIdx][i] === 'correct'"
+                   [class.incorrect]="exerciseFeedback[sIdx] && exerciseFeedback[sIdx][i] === 'incorrect'">
+                  <span class="exercise-prompt">{{ item.prompt }}</span>
+
+                  @if (section.exercise && section.exercise.type !== 'categorize') {
+                    <input type="text"
+                           [(ngModel)]="userAnswers[sIdx]![i]"
+                           (keyup.enter)="checkSection(sIdx)"
+                           placeholder="Answer..."
+                           class="ex-input"
+                           [disabled]="!exerciseFeedback[sIdx] || exerciseFeedback[sIdx][i] !== 'unanswered'" />
+                  } @else {
+                    <input type="text"
+                           [(ngModel)]="userAnswers[sIdx]![i]"
+                           (keyup.enter)="checkSection(sIdx)"
+                           placeholder="fruit / vegetable / meat..."
+                           class=ex-input
+                           [disabled]="!exerciseFeedback[sIdx] || exerciseFeedback[sIdx][i] !== 'unanswered'" />
+                  }
+
+                  @if (exerciseFeedback[sIdx] && exerciseFeedback[sIdx][i] === 'correct') {
+                    <span class="ex-result correct-tag">✓</span>
+                  } @else if (exerciseFeedback[sIdx] && exerciseFeedback[sIdx][i] === 'incorrect') {
+                    <span class="ex-result incorrect-tag">✗</span>
+                  }
+                </div>
+              }
+
+              <button class="btn-check-section" (click)="checkSection(sIdx)"
+                      [disabled]="allAnswered(sIdx)">
+                Check Answers
+              </button>
+
+              @if (showResults[sIdx]) {
+                <div class="section-score">
+                  Score: <strong>{{ scoreFor(sIdx) }}/{{ totalFor(sIdx) }}</strong>
+                  @if (scoreFor(sIdx) === totalFor(sIdx)) { <span class="star">🌟 Perfect!</span> }
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Over to You Section -->
+    @if (lessonData.overToYou) {
+      <div class="over-to-you">
+        <h3>💬 Over to You</h3>
+        <p>{{ lessonData.overToYou }}</p>
+        <textarea placeholder="Write your answer here..." rows="3"></textarea>
+      </div>
+    }
+
+    <!-- Review Prompt -->
+    @if (lessonData.reviewPrompt) {
+      <div class="review-section">
+        <h3>🔄 Daily Review</h3>
+        <p>{{ lessonData.reviewPrompt }}</p>
+      </div>
+    }
+
   } @else {
     <div class="not-found">
       <h2>Vocabulary Lesson Not Found</h2>

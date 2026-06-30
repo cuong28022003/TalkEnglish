@@ -9,19 +9,238 @@
         </a>
         @if (isSpeakingLessonsExpanded) {
           <ul class="dropdown-menu">
-            <li><a routerLink="/menu/people">People</a></li>
-            <li><a routerLink="/menu/food-and-drink">Food and Drink</a></li>
-            <li><a routerLink="/menu/work">Work</a></li>
-            <li><a routerLink="/menu/travel">Travel</a></li>
-            <li><a routerLink="/menu/the-environment">The Environment</a></li>
-            <li><a routerLink="/menu/animals">Animals</a></li>
-            <li><a routerLink="/menu/activities">Activities</a></li>
-            <li><a routerLink="/menu/around-town">Around Town</a></li>
-            <li><a routerLink="/menu/arts-and-the-media">Arts and the Media</a></li>
-            <li><a routerLink="/menu/science-and-technology">Science and Technology</a></li>
-            <li><a routerLink="/menu/health">Health</a></li>
-            <li><a routerLink="/menu/crime-and-the-law">Crime and the Law</a></li>
-            <li><a routerLink="/menu/money-and-finance">Money and Finance</a></li>
+            <!-- A. Daily Life -->
+            <li>
+              <a href="#" (click)="toggleSub('dailyLife', $event)" class="dropdown-toggle">
+                Daily Life
+                <span class="arrow" [class.down]="isExpanded_dailyLife">&#9658;</span>
+              </a>
+              @if (isExpanded_dailyLife) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/daily-life">Greetings</a></li>
+                  <li><a routerLink="/menu/daily-life">Introductions</a></li>
+                  <li><a routerLink="/menu/daily-life">Family</a></li>
+                  <li><a routerLink="/menu/daily-life">Friends</a></li>
+                  <li><a routerLink="/menu/daily-life">Hobbies</a></li>
+                  <li><a routerLink="/menu/daily-life">Daily Routine</a></li>
+                  <li><a routerLink="/menu/daily-life">Weekend</a></li>
+                  <li><a routerLink="/menu/daily-life">Shopping</a></li>
+                  <li><a routerLink="/menu/daily-life">Cooking</a></li>
+                  <li><a routerLink="/menu/daily-life">Cleaning</a></li>
+                  <li><a routerLink="/menu/daily-life">Laundry</a></li>
+                  <li><a routerLink="/menu/daily-life">Weather</a></li>
+                  <li><a routerLink="/menu/daily-life">Seasons</a></li>
+                  <li><a routerLink="/menu/daily-life">Pets</a></li>
+                  <li><a routerLink="/menu/daily-life">Birthday</a></li>
+                  <li><a routerLink="/menu/daily-life">Phone Call</a></li>
+                  <li><a routerLink="/menu/daily-life">Text Messages</a></li>
+                  <li><a routerLink="/menu/daily-life">Social Media</a></li>
+                  <li><a routerLink="/menu/daily-life">Movies</a></li>
+                  <li><a routerLink="/menu/daily-life">Music</a></li>
+                  <li><a routerLink="/menu/daily-life">Books</a></li>
+                  <li><a routerLink="/menu/daily-life">Sports</a></li>
+                </ul>
+              }
+            </li>
+            <!-- B. Food & Drink -->
+            <li>
+              <a href="#" (click)="toggleSub('foodDrink', $event)" class="dropdown-toggle">
+                Food & Drink
+                <span class="arrow" [class.down]="isExpanded_foodDrink">&#9658;</span>
+              </a>
+              @if (isExpanded_foodDrink) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/food-drink">Restaurant</a></li>
+                  <li><a routerLink="/menu/food-drink">Coffee Shop</a></li>
+                  <li><a routerLink="/menu/food-drink">Fast Food</a></li>
+                  <li><a routerLink="/menu/food-drink">Bakery</a></li>
+                  <li><a routerLink="/menu/food-drink">Bar</a></li>
+                  <li><a routerLink="/menu/food-drink">Ordering Food</a></li>
+                  <li><a routerLink="/menu/food-drink">Take Away</a></li>
+                  <li><a routerLink="/menu/food-drink">Delivery</a></li>
+                  <li><a routerLink="/menu/food-drink">Cooking</a></li>
+                  <li><a routerLink="/menu/food-drink">Recipe</a></li>
+                  <li><a routerLink="/menu/food-drink">Supermarket</a></li>
+                  <li><a routerLink="/menu/food-drink">Market</a></li>
+                  <li><a routerLink="/menu/food-drink">Convenience Store</a></li>
+                  <li><a routerLink="/menu/food-drink">Dessert</a></li>
+                  <li><a routerLink="/menu/food-drink">Healthy Food</a></li>
+                </ul>
+              }
+            </li>
+            <!-- C. Travel -->
+            <li>
+              <a href="#" (click)="toggleSub('travel', $event)" class="dropdown-toggle">
+                Travel
+                <span class="arrow" [class.down]="isExpanded_travel">&#9658;</span>
+              </a>
+              @if (isExpanded_travel) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/travel">Airport</a></li>
+                  <li><a routerLink="/menu/travel">Immigration</a></li>
+                  <li><a routerLink="/menu/travel">Customs</a></li>
+                  <li><a routerLink="/menu/travel">Taxi</a></li>
+                  <li><a routerLink="/menu/travel">Bus</a></li>
+                  <li><a routerLink="/menu/travel">Train</a></li>
+                  <li><a routerLink="/menu/travel">Subway</a></li>
+                  <li><a routerLink="/menu/travel">Hotel</a></li>
+                  <li><a routerLink="/menu/travel">Check In</a></li>
+                  <li><a routerLink="/menu/travel">Check Out</a></li>
+                  <li><a routerLink="/menu/travel">Tourist Attraction</a></li>
+                  <li><a routerLink="/menu/travel">Lost Passport</a></li>
+                  <li><a routerLink="/menu/travel">Lost Luggage</a></li>
+                  <li><a routerLink="/menu/travel">Asking Directions</a></li>
+                  <li><a routerLink="/menu/travel">Currency Exchange</a></li>
+                </ul>
+              }
+            </li>
+            <!-- D. Work -->
+            <li>
+              <a href="#" (click)="toggleSub('work', $event)" class="dropdown-toggle">
+                Work
+                <span class="arrow" [class.down]="isExpanded_work">&#9658;</span>
+              </a>
+              @if (isExpanded_work) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/work">Interview</a></li>
+                  <li><a routerLink="/menu/work">Office</a></li>
+                  <li><a routerLink="/menu/work">Meeting</a></li>
+                  <li><a routerLink="/menu/work">Presentation</a></li>
+                  <li><a routerLink="/menu/work">Project</a></li>
+                  <li><a routerLink="/menu/work">Deadline</a></li>
+                  <li><a routerLink="/menu/work">Feedback</a></li>
+                  <li><a routerLink="/menu/work">Email</a></li>
+                  <li><a routerLink="/menu/work">Phone Meeting</a></li>
+                  <li><a routerLink="/menu/work">Online Meeting</a></li>
+                  <li><a routerLink="/menu/work">Business Trip</a></li>
+                  <li><a routerLink="/menu/work">Salary</a></li>
+                  <li><a routerLink="/menu/work">Promotion</a></li>
+                  <li><a routerLink="/menu/work">Customer Support</a></li>
+                  <li><a routerLink="/menu/work">Negotiation</a></li>
+                </ul>
+              }
+            </li>
+            <!-- E. School -->
+            <li>
+              <a href="#" (click)="toggleSub('school', $event)" class="dropdown-toggle">
+                School
+                <span class="arrow" [class.down]="isExpanded_school">&#9658;</span>
+              </a>
+              @if (isExpanded_school) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/school">Classroom</a></li>
+                  <li><a routerLink="/menu/school">Teacher</a></li>
+                  <li><a routerLink="/menu/school">Homework</a></li>
+                  <li><a routerLink="/menu/school">Exam</a></li>
+                  <li><a routerLink="/menu/school">Presentation</a></li>
+                  <li><a routerLink="/menu/school">Library</a></li>
+                  <li><a routerLink="/menu/school">Group Discussion</a></li>
+                  <li><a routerLink="/menu/school">University</a></li>
+                  <li><a routerLink="/menu/school">Research</a></li>
+                  <li><a routerLink="/menu/school">Graduation</a></li>
+                </ul>
+              }
+            </li>
+            <!-- F. Health -->
+            <li>
+              <a href="#" (click)="toggleSub('health', $event)" class="dropdown-toggle">
+                Health
+                <span class="arrow" [class.down]="isExpanded_health">&#9658;</span>
+              </a>
+              @if (isExpanded_health) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/health">Doctor</a></li>
+                  <li><a routerLink="/menu/health">Hospital</a></li>
+                  <li><a routerLink="/menu/health">Pharmacy</a></li>
+                  <li><a routerLink="/menu/health">Dentist</a></li>
+                  <li><a routerLink="/menu/health">Emergency</a></li>
+                  <li><a routerLink="/menu/health">Headache</a></li>
+                  <li><a routerLink="/menu/health">Cold</a></li>
+                  <li><a routerLink="/menu/health">Fever</a></li>
+                  <li><a routerLink="/menu/health">Prescription</a></li>
+                  <li><a routerLink="/menu/health">Appointment</a></li>
+                </ul>
+              }
+            </li>
+            <!-- G. Relationships -->
+            <li>
+              <a href="#" (click)="toggleSub('relationships', $event)" class="dropdown-toggle">
+                Relationships
+                <span class="arrow" [class.down]="isExpanded_relationships">&#9658;</span>
+              </a>
+              @if (isExpanded_relationships) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/relationships">Dating</a></li>
+                  <li><a routerLink="/menu/relationships">Marriage</a></li>
+                  <li><a routerLink="/menu/relationships">Wedding</a></li>
+                  <li><a routerLink="/menu/relationships">Arguments</a></li>
+                  <li><a routerLink="/menu/relationships">Apologizing</a></li>
+                  <li><a routerLink="/menu/relationships">Giving Compliments</a></li>
+                  <li><a routerLink="/menu/relationships">Invitations</a></li>
+                  <li><a routerLink="/menu/relationships">Congratulations</a></li>
+                  <li><a routerLink="/menu/relationships">Thank You</a></li>
+                  <li><a routerLink="/menu/relationships">Goodbye</a></li>
+                </ul>
+              }
+            </li>
+            <!-- H. Money -->
+            <li>
+              <a href="#" (click)="toggleSub('money', $event)" class="dropdown-toggle">
+                Money
+                <span class="arrow" [class.down]="isExpanded_money">&#9658;</span>
+              </a>
+              @if (isExpanded_money) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/money">Bank</a></li>
+                  <li><a routerLink="/menu/money">ATM</a></li>
+                  <li><a routerLink="/menu/money">Credit Card</a></li>
+                  <li><a routerLink="/menu/money">Loan</a></li>
+                  <li><a routerLink="/menu/money">Saving Money</a></li>
+                  <li><a routerLink="/menu/money">Investment</a></li>
+                  <li><a routerLink="/menu/money">Insurance</a></li>
+                  <li><a routerLink="/menu/money">Shopping Refund</a></li>
+                </ul>
+              }
+            </li>
+            <!-- I. Technology -->
+            <li>
+              <a href="#" (click)="toggleSub('technology', $event)" class="dropdown-toggle">
+                Technology
+                <span class="arrow" [class.down]="isExpanded_technology">&#9658;</span>
+              </a>
+              @if (isExpanded_technology) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/technology">Computer</a></li>
+                  <li><a routerLink="/menu/technology">Internet</a></li>
+                  <li><a routerLink="/menu/technology">Software</a></li>
+                  <li><a routerLink="/menu/technology">Password</a></li>
+                  <li><a routerLink="/menu/technology">Technical Support</a></li>
+                  <li><a routerLink="/menu/technology">Online Shopping</a></li>
+                  <li><a routerLink="/menu/technology">Smartphone</a></li>
+                  <li><a routerLink="/menu/technology">Email</a></li>
+                  <li><a routerLink="/menu/technology">Social Media</a></li>
+                  <li><a routerLink="/menu/technology">AI Tools</a></li>
+                </ul>
+              }
+            </li>
+            <!-- J. Emergencies -->
+            <li>
+              <a href="#" (click)="toggleSub('emergencies', $event)" class="dropdown-toggle">
+                Emergencies
+                <span class="arrow" [class.down]="isExpanded_emergencies">&#9658;</span>
+              </a>
+              @if (isExpanded_emergencies) {
+                <ul class="dropdown-menu">
+                  <li><a routerLink="/menu/emergencies">Police</a></li>
+                  <li><a routerLink="/menu/emergencies">Fire</a></li>
+                  <li><a routerLink="/menu/emergencies">Accident</a></li>
+                  <li><a routerLink="/menu/emergencies">Lost Child</a></li>
+                  <li><a routerLink="/menu/emergencies">Natural Disaster</a></li>
+                  <li><a routerLink="/menu/emergencies">Emergency Call</a></li>
+                  <li><a routerLink="/menu/emergencies">First Aid</a></li>
+                </ul>
+              }
+            </li>
           </ul>
         }
       </li>

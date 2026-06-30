@@ -1,80 +1,247 @@
-<div class="detail-page">
-  <!-- Breadcrumb -->
-  <div class="breadcrumb">
-    <a routerLink="/">Home</a> &raquo;
-    <a routerLink="/menu/basics">English Speaking Basics</a> &raquo;
-    <span>{{ lessonTitle }}</span>
-  </div>
+<div class="lesson-page">
+  <!-- Sidebar Navigation (sticky left) -->
+  <aside class="lesson-sidebar">
+    <ul class="section-nav">
+      <li><a (click)="scrollTo('intro', $event)" [class.active]="activeSection === 'intro'" href="#">Introduction</a></li>
+      <li><a (click)="scrollTo('patterns', $event)" [class.active]="activeSection === 'patterns'" href="#">Patterns</a></li>
+      <li><a (click)="scrollTo('vocabulary', $event)" [class.active]="activeSection === 'vocabulary'" href="#">Vocabulary</a></li>
+      <li><a (click)="scrollTo('dialogue', $event)" [class.active]="activeSection === 'dialogue'" href="#">Dialogue</a></li>
+      <li><a (click)="scrollTo('practice', $event)" [class.active]="activeSection === 'practice'" href="#">Practice</a></li>
+      <li><a (click)="scrollTo('conversation', $event)" [class.active]="activeSection === 'conversation'" href="#">Conversation</a></li>
+      <li><a (click)="scrollTo('summary', $event)" [class.active]="activeSection === 'summary'" href="#">Summary</a></li>
+    </ul>
+  </aside>
 
-  <!-- Lesson Header -->
-  <div class="lesson-header">
-    <h2>{{ lessonTitle }}</h2>
-    <div class="instructions">
-      <p>{{ lessonDescription }} <strong>Listen to each sentence and repeat it.</strong></p>
+  <!-- Main Content -->
+  <main class="lesson-main">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a routerLink="/">Home</a> &raquo;
+      <a [routerLink]="['/menu', menuParentId]">{{ menuParentTitle }}</a> &raquo;
+      <span>{{ scenarioTitle }}</span>
     </div>
-  </div>
 
-  <!-- Lesson Content: Sentences with Play Buttons -->
-  <div class="lesson-content">
-    <div class="sentence-list">
+    <!-- Header -->
+    <div class="lesson-header" id="intro">
+      <div class="header-left">
+        <h2>{{ scenarioTitle }}</h2>
+        <span class="meta">⏱ {{ duration }} min &nbsp;|&nbsp; ⭐ XP +{{ xp }}</span>
+      </div>
+      <div class="header-right">
+        <button class="btn-favorite">❤️ Save</button>
+      </div>
+    </div>
+
+    <!-- Introduction -->
+    <section class="lesson-section" id="intro-body">
+      <h3>📋 Introduction</h3>
+      <div class="context-box">
+        <p>{{ context }}</p>
+      </div>
+      <h4>Objectives</h4>
+      <ul class="objectives-list">
+        @for (obj of objectives; track obj) {
+          <li>✓ {{ obj }}</li>
+        }
+      </ul>
+    </section>
+
+    <!-- Patterns -->
+    <section class="lesson-section" id="patterns">
+      <h3>💡 Sentence Patterns</h3>
+      <p class="section-desc">Master these patterns — you'll use them everywhere.</p>
+      <div class="pattern-cards">
+        @for (pattern of patterns; track pattern) {
+          <div class="pattern-card" (click)="playPattern(pattern)">
+            <span class="pattern-text">{{ pattern.text }}</span>
+            <button class="btn-play-sm">▶</button>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Sentences -->
+    <section class="lesson-section">
+      <h3>📝 Practice Sentences</h3>
       @for (sentence of sentences; track sentence.audioFile; let i = $index) {
         <div class="sentence-row" [class.active]="isPlaying(i)">
-          <div class="sentence-number">{{ i + 1 }}.</div>
+          <div class="sentence-number">{{ i + 1 }}</div>
           <div class="sentence-text">{{ sentence.text }}</div>
-          <div class="audio-control">
-            <button class="btn-play" (click)="playAudio(i)" [class.playing]="isPlaying(i)">
-              {{ isPlaying(i) ? '⏸ Pause' : '▶ Play' }}
+          <div class="sentence-actions">
+            <button class="btn-action" (click)="playAudio(i)" title="Play">▶</button>
+            <button class="btn-action" (click)="toggleFavorite(i)" [class.favorited]="isFavorite(i)" title="Favorite">
+              {{ isFavorite(i) ? '❤️' : '🤍' }}
             </button>
+            <button class="btn-action" (click)="toggleNote(i)" title="Note">📝</button>
           </div>
         </div>
       }
-    </div>
+    </section>
 
-    <!-- Audio Player Controls -->
-    <div class="audio-player">
-      <button class="player-btn" (click)="playAll()" title="Play All">
-        ▶ Play All
-      </button>
-      <div class="volume-control">
-        <span>🔊</span>
-        <input type="range" min="0" max="100" value="80" class="volume-slider" />
+    <!-- Pattern Expansion -->
+    <section class="lesson-section">
+      <h3>🔄 Pattern Expansion</h3>
+      <p class="section-desc">Same pattern — different endings. Unlock hundreds of sentences.</p>
+      <div class="expansion-flow">
+        @for (exp of expansions; track exp) {
+          <div class="expansion-item">
+            <div class="expansion-arrow">↓</div>
+            <span class="expansion-text">{{ exp }}</span>
+          </div>
+        }
       </div>
+    </section>
+
+    <!-- Vocabulary -->
+    <section class="lesson-section" id="vocabulary">
+      <h3>📚 Vocabulary</h3>
+      <div class="vocab-grid">
+        @for (word of vocabulary; track word) {
+          <div class="vocab-chip">{{ word }}</div>
+        }
+      </div>
+    </section>
+
+    <!-- Dialogue -->
+    <section class="lesson-section" id="dialogue">
+      <h3>💬 Mini Dialogue</h3>
+      <div class="dialogue-box">
+        @for (line of dialogue; track line) {
+          <div class="dialogue-line" [class.speaker-a]="line.role === 'A'" [class.speaker-b]="line.role === 'B'">
+            <span class="dialogue-role">{{ line.speaker }}</span>
+            <span class="dialogue-text">{{ line.text }}</span>
+            <button class="btn-play-sm" (click)="speak(line.text)" title="Play">▶</button>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Practice (Listen → Repeat → Record → AI Feedback) -->
+    <section class="lesson-section" id="practice">
+      <h3>🎯 Practice</h3>
+      <div class="practice-flow">
+        <!-- Current sentence & phase indicator -->
+        @if (isPracticing) {
+          <div class="practice-current">
+            <span class="practice-counter">{{ practiceIndex + 1 }} / {{ sentences.length }}</span>
+            <div class="practice-card" [class.practice-card-listen]="practicePhase === 'listen'"
+                 [class.practice-card-repeat]="practicePhase === 'repeat'"
+                 [class.practice-card-record]="practicePhase === 'record'"
+                 [class.practice-card-feedback]="practicePhase === 'feedback'">
+              <span class="phase-badge">{{ phaseLabel }}</span>
+              <p class="practice-sentence">{{ sentences[practiceIndex] ? sentences[practiceIndex].text : '' }}</p>
+              <button class="btn-play-sm" (click)="speak(sentences[practiceIndex] ? sentences[practiceIndex].text : '')">🔊</button>
+            </div>
+          </div>
+        } @else {
+          <div class="practice-current">
+            <div class="practice-card practice-idle">
+              <p class="practice-sentence practice-hint">Click ▶ Start Practice to begin</p>
+            </div>
+          </div>
+        }
+
+        <!-- Phase steps -->
+        <div class="practice-row">
+          <button class="practice-step" [class.active]="practicePhase === 'listen'"
+                  [disabled]="!isPracticing" (click)="doCurrentPhase()">
+            <span class="step-badge">1</span>
+            <span>Listen</span>
+          </button>
+          <button class="practice-step" [class.active]="practicePhase === 'repeat'"
+                  [disabled]="!isPracticing || practicePhase === 'listen'" (click)="doCurrentPhase()">
+            <span class="step-badge">2</span>
+            <span>Repeat</span>
+          </button>
+          <button class="practice-step" [class.active]="practicePhase === 'record'"
+                  [disabled]="!isPracticing || practicePhase === 'listen' || practicePhase === 'repeat'"
+                  (click)="toggleRecording()">
+            <span class="step-badge">3</span>
+            <span>{{ isRecording ? 'Recording...' : 'Record' }}</span>
+            <span class="record-indicator" [class.recording]="isRecording"></span>
+          </button>
+          <button class="practice-step" [class.active]="practicePhase === 'feedback'"
+                  [disabled]="!isPracticing || practicePhase === 'listen' || practicePhase === 'repeat'"
+                  (click)="giveFeedback()">
+            <span class="step-badge">4</span>
+            <span>{{ hasFeedback ? 'Feedback ✓' : 'AI Feedback' }}</span>
+          </button>
+        </div>
+
+        <!-- AI Feedback result -->
+        @if (isPracticing && practicePhase === 'feedback' && hasFeedback) {
+          <div class="feedback-box">
+            <div class="feedback-score">
+              <span class="score-value">{{ feedbackScore }}%</span>
+              <span class="score-label">Accuracy</span>
+            </div>
+            <div class="feedback-details">
+              <p>{{ feedbackMessage }}</p>
+              @if (feedbackDetails.length > 0) {
+                <div class="feedback-words">
+                  <p class="feedback-subtitle">Words to improve:</p>
+                  <ul>
+                    @for (detail of feedbackDetails; track detail) {
+                      <li>{{ detail }}</li>
+                    }
+                  </ul>
+                </div>
+              }
+              @if (feedbackScore >= 90) {
+                <p class="feedback-star">🌟 Great job!</p>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Controls -->
+        <div class="practice-controls">
+          @if (!isPracticing) {
+            <button class="btn-start" (click)="startPractice()">▶ Start Practice</button>
+          } @else {
+            <button class="btn-advance" (click)="advancePhase()" [disabled]="practicePhase === 'feedback' && !hasFeedback">
+              {{ practicePhase === 'feedback' && hasFeedback ? '⏭ Next Sentence →' : '⏭ Next Phase →' }}
+            </button>
+            <button class="btn-stop" (click)="resetPractice()">⏹ Stop</button>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Conversation -->
+    <section class="lesson-section" id="conversation">
+      <h3>🤖 AI Conversation</h3>
+      <p class="section-desc">Practice with AI — the conversation changes every time.</p>
+      <div class="ai-conversation-box">
+        <div class="ai-role">{{ conversationRole }}</div>
+        <div class="ai-message">{{ conversationPrompt }}</div>
+        <button class="btn-primary" (click)="startConversation()">Start Conversation →</button>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="lesson-section" id="summary">
+      <h3>📊 Summary</h3>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <span class="summary-num">{{ sentences.length }}</span>
+          <span class="summary-label">Sentences Learned</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-num">{{ vocabulary.length }}</span>
+          <span class="summary-label">Vocabulary</span>
+        </div>
+        <div class="summary-card">
+          <span class="summary-num">{{ patterns.length }}</span>
+          <span class="summary-label">Patterns</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="lesson-navigation">
+      <a class="btn-secondary" [routerLink]="['/menu', menuParentId]">← Back to {{ menuParentTitle }}</a>
+      <a class="btn-primary" [routerLink]="['/lesson', nextLessonId]">Next Scenario →</a>
     </div>
-  </div>
-
-  <!-- Record Yourself Section -->
-  <div class="record-section">
-    <h3>🎙️ Record Yourself</h3>
-    <ol>
-      <li>Click <strong>Record</strong> and speak into your microphone.</li>
-      <li>Click <strong>Stop</strong> and <strong>Play</strong> to hear your version.</li>
-      <li>Compare with the Native Model above.</li>
-    </ol>
-    <div class="record-controls">
-      <button class="btn-record" [class.recording]="isRecording" (click)="toggleRecording()">
-        {{ isRecording ? '⏹ Stop' : '🔴 Record' }}
-      </button>
-      <button class="btn-playback" (click)="playRecording()" [disabled]="isRecording">
-        ▶ Playback
-      </button>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <div class="lesson-navigation">
-    <a class="btn-secondary" routerLink="/menu/basics">← Back to Lessons</a>
-    <a class="btn-primary" routerLink="/menu/basics">Next Lesson →</a>
-  </div>
-
-  <!-- Discover More -->
-  <div class="discover-more">
-    <h3>Discover more</h3>
-    <ul class="discover-list">
-      <li><a href="#">English grammar guide</a></li>
-      <li><a href="#">Pronunciation lessons</a></li>
-      <li><a href="#">English listening exercises</a></li>
-      <li><a href="#">Language learning app</a></li>
-      <li><a href="#">Public speaking tips</a></li>
-    </ul>
-  </div>
+  </main>
 </div>

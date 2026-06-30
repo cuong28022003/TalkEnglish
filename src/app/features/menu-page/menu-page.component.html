@@ -1,49 +1,72 @@
 <div class="menu-page">
-  <div class="menu-intro">
-    <h2>{{ menuTitle }}</h2>
-    <p>
-      This section is created for English speaking beginners who need help to understand the basics of speaking English. 
-      We will use very simple phrases and expressions to help you with your English speaking.
-    </p>
-    <p>
-      There are currently <strong>90 lessons with over 900 audio files</strong> in the {{ menuTitle }} Section. 
-      Once you are familiar with the basics, you can move to other categories such as Regular English Lessons.
-    </p>
+  <!-- Topic Header -->
+  <div class="topic-header">
+    <div class="topic-info">
+      <h2>{{ menuTitle }}</h2>
+      <span class="category-label">{{ categoryLabel }}</span>
+    </div>
+    <div class="topic-stats">
+      <div class="stat-item">
+        <span class="stat-value">{{ progress }}%</span>
+        <span class="stat-label">Progress</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">{{ difficultyLabel }}</span>
+        <span class="stat-label">Difficulty</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">{{ estimatedTime }}</span>
+        <span class="stat-label">Estimated Time</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">{{ totalScenarios }}</span>
+        <span class="stat-label">Scenarios</span>
+      </div>
+    </div>
   </div>
 
-  <div class="lesson-groups">
+  <!-- Description -->
+  <div class="topic-description">
+    <p>{{ topicDescription }}</p>
+  </div>
+
+  <!-- Scenario Grid -->
+  <div class="scenario-grid">
     @if (isGrouped) {
       @for (group of groupedLessons; track group.category) {
-        <div class="lesson-group">
-          <h3>{{ group.category }}</h3>
-          <ul class="lesson-list">
+        <div class="scenario-group">
+          <h3 class="group-title">{{ group.category }}</h3>
+          <div class="scenario-cards">
             @for (lesson of group.lessons; track lesson.id) {
-              <li><a [routerLink]="[itemRoutePrefix, lesson.id]">{{ lesson.title }}</a></li>
+              <a class="scenario-card" [routerLink]="[itemRoutePrefix, lesson.id]">
+                <div class="card-body">
+                  <h4>{{ lesson.title }}</h4>
+                  <p>{{ lesson.description }}</p>
+                </div>
+                <div class="card-footer">
+                  <span class="lesson-count">{{ lesson.sentences?.length || 0 }} phrases</span>
+                  <span class="card-arrow">→</span>
+                </div>
+              </a>
             }
-          </ul>
+          </div>
         </div>
       }
     } @else {
-      <div class="lesson-group">
-        <h3>{{ menuTitle }} Lessons</h3>
-        <ul class="lesson-list">
-          @for (lesson of lessonsList; track lesson.id) {
-            <li><a [routerLink]="[itemRoutePrefix, lesson.id]">{{ lesson.title }}</a></li>
-          }
-        </ul>
+      <div class="scenario-cards">
+        @for (lesson of lessonsList; track lesson.id) {
+          <a class="scenario-card" [routerLink]="[itemRoutePrefix, lesson.id]">
+            <div class="card-body">
+              <h4>{{ lesson.title }}</h4>
+              <p>{{ lesson.description }}</p>
+            </div>
+            <div class="card-footer">
+              <span class="lesson-count">{{ lesson.sentences?.length || 0 }} phrases</span>
+              <span class="card-arrow">→</span>
+            </div>
+          </a>
+        }
       </div>
     }
-  </div>
-
-  <div class="discover-more">
-    <h3>Discover more</h3>
-    <ul class="discover-list">
-      <li><a href="#">Business English course</a></li>
-      <li><a href="#">English vocabulary builder</a></li>
-      <li><a href="#">English speaking course</a></li>
-      <li><a href="#">English idioms dictionary</a></li>
-      <li><a href="#">Beginner English audio</a></li>
-      <li><a href="#">Travel English lessons</a></li>
-    </ul>
   </div>
 </div>

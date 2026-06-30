@@ -6,6 +6,7 @@
 
     <div class="grammar-header">
       <h2>{{ unitData.title }}</h2>
+      <span class="category-tag">{{ unitData.category }}</span>
     </div>
 
     <div class="grammar-layout">
@@ -20,7 +21,7 @@
               }
             </ul>
           </div>
-          
+
           <h3>Examples</h3>
           <div class="content-box examples-box">
             <ul>
@@ -31,22 +32,77 @@
           </div>
         </div>
 
-        <!-- Right side: Exercises -->
+        <!-- Right side: Interactive Exercises -->
         <div class="grammar-exercises">
-          <h3>Exercises</h3>
+          <div class="exercises-header">
+            <h3>Exercises</h3>
+            <span class="score-badge">{{ score }}/{{ unitData.exercises.length }}</span>
+          </div>
+
           <div class="content-box">
-            <p>Read the sentences and see the correct usage:</p>
+            <p class="exercise-intro">Type your answer, then click <strong>Check</strong>.</p>
             <div class="exercise-list">
               @for (exercise of unitData.exercises; track exercise.question; let i = $index) {
-                <div class="exercise-item">
+                <div class="exercise-item"
+                     [class.is-correct]="exerciseFeedback[i] === 'correct'"
+                     [class.is-incorrect]="exerciseFeedback[i] === 'incorrect'">
                   <div class="question">
                     <strong>{{ i + 1 }}.</strong> {{ exercise.question }}
                   </div>
-                  <div class="answer">
-                    <em>Answer:</em> <span class="correct-answer">{{ exercise.answer }}</span>
+                  <div class="input-row">
+                    <input
+                      type="text"
+                      [(ngModel)]="userAnswers[i]"
+                      (keyup.enter)="checkAnswer(i)"
+                      placeholder="Type your answer..."
+                      class="answer-input"
+                      [disabled]="exerciseFeedback[i] !== 'unanswered'"
+                    />
+                    <button class="btn-check" (click)="checkAnswer(i)"
+                            [disabled]="exerciseFeedback[i] !== 'unanswered' || !userAnswers[i] || !userAnswers[i].trim()">
+                      Check
+                    </button>
+                    <button class="btn-hint" (click)="toggleHint(i)" title="Show hint">💡</button>
                   </div>
+
+                  @if (showHint[i] && exerciseFeedback[i] === 'unanswered') {
+                    <div class="hint-box">
+                      Hint: <em>{{ hintFor(i) }}</em>
+                    </div>
+                  }
+
+                  @if (exerciseFeedback[i] === 'correct') {
+                    <div class="feedback correct-feedback">✓ Correct!</div>
+                  } @else if (exerciseFeedback[i] === 'incorrect') {
+                    <div class="feedback incorrect-feedback">
+                      ✗ Incorrect. Answer: <strong>{{ exercise.answer }}</strong>
+                    </div>
+                  }
                 </div>
               }
+            </div>
+
+            <!-- Results summary -->
+            @if (showAllResults) {
+              <div class="results-bar">
+                <div class="results-text">
+                  Score: <strong>{{ score }}/{{ unitData.exercises.length }}</strong>
+                  ({{ percentCorrect() }}%)
+                </div>
+                <div class="results-bar-fill" [style.width.%]="percentCorrect()"
+                     [class.excellent]="percentCorrect() >= 80"
+                     [class.good]="percentCorrect() >= 50 && percentCorrect() < 80"
+                     [class.needs-work]="percentCorrect() < 50">
+                </div>
+              </div>
+            }
+
+            <div class="exercise-actions">
+              <button class="btn-primary" (click)="checkAll()"
+                      [disabled]="allAnswered()">
+                Check All
+              </button>
+              <button class="btn-secondary" (click)="resetExercises()">Reset</button>
             </div>
           </div>
         </div>

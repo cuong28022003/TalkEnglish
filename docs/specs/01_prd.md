@@ -6,85 +6,100 @@ The objective is to build a comprehensive English learning platform modeled afte
 **Key Goals:**
 - **Integrated Learning:** Provide a structure where users practice reading, listening, and speaking simultaneously to achieve fluency.
 - **Accessibility:** Offer high-quality English education for free, accessible via web, mobile apps, and offline versions.
-- **Comprehensive Curriculum:** Host a vast library of lessons ranging from "English Speaking Basics" to "Business English" and "Advanced Listening".
+- **Comprehensive Curriculum:** Host a vast library covering scenario-based speaking, structured grammar, thematic vocabulary (English Vocabulary in Use model), and graded practice exercises.
 
 ---
 
 ## 1.2 Target Users
-The platform serves a global audience of English learners across various proficiency levels:
-- **Beginners:** Users who need help with basic phrases and expressions to understand the fundamentals of speaking.
-- **Intermediate Learners:** Students who have mastered basics but struggle with complex structures, such as those found in *English Grammar in Use* (e.g., present perfect continuous, modals, and relative clauses).
-- **Business Professionals:** Individuals looking to improve fluency in office settings, prepare for interviews, or master professional idioms.
-- **Travelers:** Users needing situational English for navigation, tickets, and local interactions.
+- **Beginners:** Need simple phrases to understand speaking fundamentals (A-J scenarios).
+- **Intermediate Learners:** Master complex grammar (English Grammar in Use) and expand vocabulary (English Vocabulary in Use model).
+- **Business Professionals:** Office English, interviews, professional idioms.
+- **Travelers:** Situational English for navigation, hotels, tickets.
+- **Self-Study Learners:** Need structured "facing pages" layout, graded exercises, and daily review system.
 
 ---
 
 ## 1.3 Core Features and Functionality
-- **Lesson Search:** A robust search tool to find specific grammar points or situational phrases.
+- **Lesson Search:** Robust search for grammar points, vocabulary, or situational phrases.
 - **Audio-Visual Integration:**
-  - **Audio Files:** Every phrase or sentence in beginner lessons must include a clickable audio file (e.g., 900+ audio files for the 90 Speaking Basics lessons).
-  - **Video Lessons:** Dedicated sections for conversation, business, and general speaking videos.
-  - **Record Yourself:** A feature to allow users to compare their own pronunciation against native models.
+  - **Audio Files:** Clickable play on every sentence, word, and example (using Web Speech API).
+  - **Record Yourself:** MediaRecorder API — users record, play back, compare.
+  - **AI Feedback:** Speech-to-Text comparison → accuracy score + word-level errors.
 - **Interactive Exercises:**
-  - Self-study grammar practice with a "Key to Exercises" for immediate feedback.
-  - Study guides to help users identify which units they need to focus on.
-- **Multilingual Support:** Instructions and navigation available in 20+ languages, including Spanish, French, Chinese, and Arabic.
-- **Offline Functionality:** Ability to download "Offline Versions" for computers and mobile devices.
-- **Resource Library:** Downloadable PDFs (e.g., "1000 Daily Use Sentences") and interactive ebooks.
+  - **Grammar:** Input-field exercises with Check/Check All/Reset + scoring + progress bar.
+  - **Vocabulary:** Facing-pages layout (Learn ↔ Practice) with graded exercises (match, fill-gap, categorize, write).
+  - **"Over to You"** personalization prompts after each vocab unit.
+  - **Daily Review** prompts using active recall techniques.
+- **Practice Loop (detail-page):** Listen → Repeat → Record → AI Feedback → Next sentence (phase-gated workflow).
+- **Offline Functionality:** Download versions for computer, Android, iOS.
+- **Resource Library:** 1,000 daily-use sentences, interactive ebooks.
 
 ---
 
 ## 1.4 Content Structure
-The content is organized into logical tracks to guide users from absolute beginner to advanced proficiency:
 
 ### English Lessons Hierarchy
-1. **Speaking English Lessons (Topic English / Vocabulary Builder):**
-   - **People**
-   - **Food and Drink**
-   - **Work**
-   - **Travel**
-   - **The Environment**
-   - **Animals**
-   - **Activities**
-   - **Around Town**
-   - **Arts and the Media**
-   - **Science and Technology**
-   - **Health**
-   - **Crime and the Law**
-   - **Money and Finance**
-2. **Listening Lessons:** Categorized into Basic, Intermediate, and Advanced levels
-3. **Extra Lessons:** Focus on Pronunciation, Grammar Basics, and ESL Vocabulary
+1. **Speaking English Lessons (Scenario-Based — A-J Categories):**
+   Lessons = real-life scenarios. Each scenario has Introduction → Patterns → Sentences → Pattern Expansion → Vocabulary → Dialogue → Practice (Listen/Repeat/Record/Feedback) → AI Conversation → Summary.
 
-### Grammar Framework (145 Units)
-The grammar section follows the systematic structure of *English Grammar in Use*, organized by grammatical category:
-- **Tenses:** Present and Past (Units 1–6), Present Perfect and Past (Units 7–14), Future (Units 19–25)
-- **Modals:** Can, Could, Must, May, Might, Should (Units 26–37)
-- **Structure:** Passive voice (Units 42–46), Reported Speech (Units 47–48), Conditionals (Units 38–40)
-- **Pronouns & Determiners** (Units 82-91)
-- **Relative Clauses** (Units 92-97)
-- **Adjectives & Adverbs** (Units 98-111)
-- **Phrasal Verbs** (Units 137-145)
+   **A. Daily Life** — Greetings, Introductions, Family, Friends, Hobbies, Daily Routine, Weekend, Shopping, Cooking, Cleaning, Laundry, Weather, Seasons, Pets, Birthday, Phone Call, Text Messages, Social Media, Movies, Music, Books, Sports
 
-### Daily Use Sentences
-Thematic modules featuring 1,000 sentences such as:
-- **Self-Introduction:** "My name is Daniel," "I work as a teacher"
-- **Situational:** Asking for help, finding a bank, ordering dinner, and checking meeting times
-- **Abstract:** Expressing opinions, making suggestions, and asking for advice
+   **B. Food & Drink** — Restaurant, Coffee Shop, Fast Food, Bakery, Bar, Ordering Food, Take Away, Delivery, Cooking, Recipe, Supermarket, Market, Convenience Store, Dessert, Healthy Food
+
+   **C. Travel** — Airport, Immigration, Customs, Taxi, Bus, Train, Subway, Hotel, Check In, Check Out, Tourist Attraction, Lost Passport, Lost Luggage, Asking Directions, Currency Exchange
+
+   **D. Work** — Interview, Office, Meeting, Presentation, Project, Deadline, Feedback, Email, Phone Meeting, Online Meeting, Business Trip, Salary, Promotion, Customer Support, Negotiation
+
+   **E. School** — Classroom, Teacher, Homework, Exam, Presentation, Library, Group Discussion, University, Research, Graduation
+
+   **F. Health** — Doctor, Hospital, Pharmacy, Dentist, Emergency, Headache, Cold, Fever, Prescription, Appointment
+
+   **G. Relationships** — Dating, Marriage, Wedding, Arguments, Apologizing, Giving Compliments, Invitations, Congratulations, Thank You, Goodbye
+
+   **H. Money** — Bank, ATM, Credit Card, Loan, Saving Money, Investment, Insurance, Shopping Refund
+
+   **I. Technology** — Computer, Internet, Software, Password, Technical Support, Online Shopping, Smartphone, Email, Social Media, AI Tools
+
+   **J. Emergencies** — Police, Fire, Accident, Lost Child, Natural Disaster, Emergency Call, First Aid
+
+2. **Grammar in Use (145 Units):**
+   Interactive exercises with input fields, Check All, scoring, progress bar.
+   - **Tenses:** Present and Past (units 1–6), Perfect (7–14), Future (19–25)
+   - **Modals:** Can–Could, Must, May, Might, Should (26–37)
+   - **Structure:** Passive (42–46), Reported Speech (47–48), Conditionals (38–40)
+   - **Pronouns & Determiners** (82–91), **Relative Clauses** (92–97), **Adjectives & Adverbs** (98–111), **Phrasal Verbs** (137–145)
+
+3. **Vocabulary in Use (English Vocabulary in Use model):**
+   Facing-pages layout: **Learn (left)** — vocabulary list with definitions & examples + audio; **Practice (right)** — graded exercises (match, fill-gap, categorize, write). Each unit ends with **"Over to You"** personalization prompt + **Daily Review** tip.
+
+   **Active Categories:**
+   - The World Around Us (Weather, Geography, Environment)
+   - People (Appearance, Personality, Family)
+   - Daily Life (Routine, Home, Food)
+   - Travel & Transport
+   - Work & Study
+   - Health & Fitness
+   - Leisure & Entertainment
+
+4. **Listening Lessons:** Basic, Intermediate, Advanced levels.
+
+5. **Extra Lessons:** Pronunciation, English Grammar Basics, ESL Vocabulary.
 
 ---
 
 ## 1.5 Technical Requirements
-- **Cross-Platform Capability:** Native apps for Android and iOS alongside a responsive web version.
-- **Audio Management:** High-performance audio streaming engine for instantaneous playback of phrase-specific audio files.
-- **Offline Storage:** Secure local storage for "Offline Version" downloads on Windows and mobile OS.
-- **Progress Tracking:** Database to track user progress through the 145 grammar units and 90 basic speaking lessons.
-- **Search Engine:** Indexing of "Full Lesson Index" for rapid keyword retrieval.
+- **Cross-Platform:** Responsive web + offline versions for Windows, Android, iOS.
+- **Audio:** Web Speech API for TTS playback; MediaRecorder API for recording.
+- **AI Feedback:** Speech-to-Text via Web Speech Recognition API; word-level accuracy scoring.
+- **Offline Storage:** LocalStorage for progress, IndexedDB for downloaded content.
+- **Search:** Full text index across all lessons, grammar units, and vocabulary items.
+- **Angular:** Standalone components, lazy-loaded routes, ChangeDetectionStrategy.OnPush.
 
 ---
 
 ## 1.6 Success Metrics
-- **User Fluency improvement:** Measured by completion rates of the "5 Rules for Speaking Fluency" curriculum.
-- **Engagement:** Average time spent on "Interactive Ebooks" and lesson pages.
-- **Acquisition:** Number of "Offline Version" and mobile app downloads.
-- **Comprehension:** Score improvements in the grammar "Study Guide" and exercise completion.
-- **Global Reach:** Geographic distribution of users accessing instructions in non-English languages.
+- **Fluency Improvement:** Completion rate of scenario-based speaking lessons.
+- **Engagement:** Time spent on vocabulary "facing pages" units and grammar exercises.
+- **Accuracy:** Improvements in grammar exercise scores and AI speech feedback scores.
+- **Vocabulary Retention:** Completion of daily review cycles and "Over to You" submissions.
+- **Global Reach:** Geographic distribution of language selections.
